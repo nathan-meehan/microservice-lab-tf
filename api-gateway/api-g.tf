@@ -10,6 +10,11 @@ resource "aws_apigatewayv2_integration" "tf_api_lambda" {
   integration_uri    = var.lambda_uri
 }
 
+resource "aws_apigatewayv2_stage" "example" {
+  api_id      = aws_apigatewayv2_api.tf_api_g.id
+  name        = "$default"
+  auto_deploy = true
+}
 
 resource "aws_apigatewayv2_route" "get_items" {
   api_id    = aws_apigatewayv2_api.tf_api_g.id
@@ -35,11 +40,7 @@ resource "aws_apigatewayv2_route" "delete_items" {
   target    = "integrations/${aws_apigatewayv2_integration.tf_api_lambda.id}"
 }
 
-resource "aws_apigatewayv2_stage" "example" {
-  api_id      = aws_apigatewayv2_api.tf_api_g.id
-  name        = "$default"
-  auto_deploy = true
-}
+
 
 
 

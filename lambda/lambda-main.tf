@@ -5,6 +5,6 @@ resource "aws_lambda_function" "test_lambda_2" {
   filename      = var.file_name
   handler       = "index.handler"
   role          = "arn:aws:iam::535566415663:role/LabRole"
-  runtime       = "nodejs16.x"
+  runtime       = "nodejs14.x"
 
 }
