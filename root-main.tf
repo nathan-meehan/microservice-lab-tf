@@ -19,9 +19,11 @@ module "table" {
 module "lambda" {
   source    = "./lambda"
   file_name = "./lambda-config.zip"
+  credentials = ""
 }
 
 module "api-gateway" {
   source     = "./api-gateway"
   lambda_uri = module.lambda.lambda_uri
+  credentials = ""
 }
